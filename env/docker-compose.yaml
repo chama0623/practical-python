@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  py3.9-no-gpu:
+    build: .
+    restart: always
+    entrypoint: >
+      jupyter-lab --allow-root --ip=0.0.0.0 --port=8888 --no-browser --NotebookApp.token='' 
+    expose:
+      - "8888"
+    ports:
+      - "127.0.0.1:8888:8888"
+    volumes:
+      - ../:/src
