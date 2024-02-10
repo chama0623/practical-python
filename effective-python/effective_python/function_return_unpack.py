@@ -1,7 +1,7 @@
 from collections import namedtuple
 
 
-def get_stats(numbers: list[int]) -> (int, int, int, int):
+def get_stats(numbers: list[int]) -> tuple[int, int, float, float, int]:
     """numbersの統計量を返す
 
     Args:
