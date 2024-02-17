@@ -15,6 +15,32 @@ def normalize(numbers: list) -> list[int]:
     return result
 
 
+def normalize_defensive(numbers) -> list[int]:
+    """正規化する
+
+    Args:
+        numbers (Iterator): 正規化する数値のイテレータ
+
+    Raises:
+        TypeError: 引数でイテレータが渡されたとき
+
+    Returns:
+        list[int]: 正規化した数値のリスト
+    """
+    # Iterator : __iter__()が実装された反復可能なオブジェクトにアクセスするインターフェース(クラス)
+    # Iterator Object : iter()で作成されるイテレータのインスタンス(オブジェクト)
+    # iter(Iterator Object)を実行すると, そのIterator Object自身を返す
+    if iter(numbers) is numbers:  # iterator objectが渡されたとき
+        raise TypeError("Must supply a cpntainer")
+    # iteratorが渡されたとき
+    total = sum(numbers)
+    result = []
+    for number in numbers:
+        percent = 100 * number / total
+        result.append(percent)
+    return result
+
+
 class ReadVisits:
     def __init__(self, data_path: str) -> None:
         self.data_path = data_path
@@ -69,3 +95,19 @@ if __name__ == "__main__":
     # イテレータの動作確認用
     # for v in visits:
     #     print(v)
+
+    # 正規化処理の改善結果
+    visits = [15, 35, 80]
+    percentages = normalize_defensive(visits)
+    print(percentages)
+    assert sum(percentages) == 100.0
+
+    visits = ReadVisits("effective_python/dataset/my_numbers.txt")
+    percentages = normalize_defensive(visits)
+    print(percentages)
+    assert sum(percentages) == 100.0
+
+    # イテレータを渡すとエラーになる
+    visits = [15, 35, 80]
+    it = iter(visits)
+    normalize_defensive(it)
