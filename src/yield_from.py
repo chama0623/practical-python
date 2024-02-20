@@ -1,10 +1,11 @@
 from typing import Generator, Callable
 
+
 # type.Generator: Generator[YieldType, SendType, ReturnType]
 # YieldType : yieldする値の型
 # SendType : generator_object.send(value)でgenerator_objectに送る値の型
 # ReturnType : StopIteration例外時に返す値の型
-def move(period:int, speed:float)->Generator[float, None, None]:
+def move(period: int, speed: float) -> Generator[float, None, None]:
     """指定されたフレームのあいだ, イメージの移動速度を返す
 
     Args:
@@ -16,8 +17,9 @@ def move(period:int, speed:float)->Generator[float, None, None]:
     """
     for _ in range(period):
         yield speed
-        
-def pause(delay:int)-> Generator[int, None, None]:
+
+
+def pause(delay: int) -> Generator[int, None, None]:
     """指定されたフレームのあいだ, イメージを停止させる
 
     Args:
@@ -28,8 +30,9 @@ def pause(delay:int)-> Generator[int, None, None]:
     """
     for _ in range(delay):
         yield 0
-        
-def animate()->Generator[float, None, None]:
+
+
+def animate() -> Generator[float, None, None]:
     """悪い例. 少しの間高速で移動し, 停止した後, ゆっくりと移動する
     移動と停止を何度も繰り返す場合は読みにくい
 
@@ -43,7 +46,8 @@ def animate()->Generator[float, None, None]:
     for delta in move(2, 3.0):
         yield delta
 
-def animate_composed()->Generator[float, None, None]:
+
+def animate_composed() -> Generator[float, None, None]:
     """yield fromによる改善例. 少しの間高速で移動し, 停止した後, ゆっくりと移動する
 
     Yields:
@@ -52,8 +56,9 @@ def animate_composed()->Generator[float, None, None]:
     yield from move(4, 5.0)
     yield from pause(3)
     yield from move(2, 3.0)
-        
-def render(delta:float):
+
+
+def render(delta: float):
     """アニメーションを描画する. ここでは標準出力に移動速度を表示する.
 
     Args:
@@ -61,7 +66,8 @@ def render(delta:float):
     """
     print(f"Delta: {delta:.1f}")
 
-def run(func:Callable[[], float])->None:
+
+def run(func: Callable[[], float]) -> None:
     """アニメーションを実行する
 
     Args:
@@ -70,7 +76,8 @@ def run(func:Callable[[], float])->None:
     for delta in func():
         render(delta)
 
+
 if __name__ == "__main__":
     run(animate)
-    print("-"*10)
+    print("-" * 10)
     run(animate_composed)
