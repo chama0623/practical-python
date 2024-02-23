@@ -1,5 +1,4 @@
-from collections import defaultdict
-from collections import namedtuple
+from collections import defaultdict, namedtuple
 
 
 class SimpleGradebook:
