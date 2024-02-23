@@ -1,5 +1,5 @@
 import math
-from typing import Generator, Callable
+from typing import Callable, Generator
 
 
 def wave(amplitude: float, steps: int) -> Generator[float, None, None]:
