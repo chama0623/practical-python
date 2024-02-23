@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  py3.9-no-gpu:
+    build: .
+    restart: always
+    tty: true
+    volumes:
+      - ./:/workspace
