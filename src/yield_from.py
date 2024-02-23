@@ -1,4 +1,4 @@
-from typing import Generator, Callable
+from typing import Callable, Generator
 
 
 # type.Generator: Generator[YieldType, SendType, ReturnType]
