@@ -1,7 +1,7 @@
 # mix-inクラス
 # サブクラスが提供すべき一連の追加メソッドを定義するだけのクラス
-# この例では階層構造をdictで表現する関数だけろToDictMixinで定義しておき,
-# BinaryTreeがそれを継承している.
+# この例では階層構造をdictで表現する関数だけろToDictMixinで定義しておき, BinaryTreeがそれを継承している.
+#
 
 
 class ToDictMixin:
