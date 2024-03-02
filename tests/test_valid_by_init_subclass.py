@@ -1,12 +1,5 @@
-from src.valid_by_init_subclass import (
-    Triangle,
-    Rectangle,
-    RedTriangle,
-    Hexagon,
-    Nonagon,
-    Filled,
-    Polygon,
-)
+from src.valid_by_init_subclass import (Filled, Hexagon, Nonagon, Polygon,
+                                        Rectangle, RedTriangle, Triangle)
 
 
 def test_polygon():
