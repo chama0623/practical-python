@@ -1,5 +1,5 @@
-from functools import wraps
 import types
+from functools import wraps
 
 
 def my_class_decorator(klass):
